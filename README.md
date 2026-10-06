@@ -72,6 +72,8 @@ cd qwen3.8-flash-spark-opencode
 
 `setup.sh` does three things, and skips any that are already done:
 1. Creates `.env` with a random **API key**, so only you can use the server on your network.
+   The key is optional: on a home network you trust, you can empty the `SPARK_API_KEY=` line
+   in `.env` and skip the key steps on the Mac. Keep it on shared networks (office, dorm).
 2. Clones the [Blazux recipe](https://github.com/blazux/qwen3.8-Flash-DGX) into
    `qwen3.8-Flash-DGX/`, at the commit this guide was tested with (`5d944b3`).
 3. Runs the recipe's own `./flash setup`: builds the vLLM Docker image, downloads
@@ -124,15 +126,15 @@ curl -fsSL https://opencode.ai/install | bash
 
 (or see [opencode.ai](https://opencode.ai) for Homebrew and other options)
 
-### 2. Get this repo and your API key
+### 2. Get this repo (and your API key)
 
 ```bash
 git clone https://github.com/pushkarkumar-dev/qwen3.8-flash-spark-opencode.git
 cd qwen3.8-flash-spark-opencode
 ```
 
-Copy the key from the Spark (run this on the Spark: `grep SPARK_API_KEY .env`), then add it
-to your shell on the Mac:
+If you use an API key, copy it from the Spark (run this on the Spark: `grep SPARK_API_KEY .env`),
+then add it to your shell on the Mac:
 
 ```bash
 echo 'export SPARK_API_KEY=paste-your-key-here' >> ~/.zshrc
