@@ -1,0 +1,12 @@
+# Your API key and local overrides
+.env
+
+# The Blazux recipe, cloned by scripts/setup.sh
+/qwen3.8-Flash-DGX/
+
+# Your own benchmark runs (reference results live in results/reference/)
+/results/results-*.json
+
+__pycache__/
+*.pyc
+.DS_Store
