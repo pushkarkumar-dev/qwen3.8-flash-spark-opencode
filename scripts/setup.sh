@@ -41,7 +41,9 @@ ok "recipe at $(git -C "$RECIPE_DIR" log -1 --format='%h  %s' | cut -c1-80)"
 
 step "Recipe setup (image build + ~124 GiB download + hybrid layout)"
 cd "$RECIPE_DIR"
-./flash doctor || true      # reports what is missing; setup fixes it
+# doctor reports what is missing (setup fixes it). Its "available now" memory line
+# only matters when the server starts, and serve.sh checks that again.
+./flash doctor "$PROFILE" GPU_MEM="$GPU_MEM" CTX="$CTX" || true
 ./flash setup "$PROFILE"
 
 step "System check"
@@ -55,3 +57,5 @@ fi
 
 echo
 echo "Setup done. Start the server with: ./scripts/serve.sh"
+echo "(Use it instead of the recipe's './flash serve' above: it adds the memory check, the API key,"
+echo " the tested settings and the restart policy.)"

@@ -53,6 +53,8 @@ after **~11 s** here, versus **~60 s** with llama.cpp.
   and the NVIDIA container runtime (all preinstalled on DGX OS)
 - **~140 GB free disk** for the model, and a decent internet connection for the one-time
   ~124 GiB download
+- Optional: a [Hugging Face token](https://huggingface.co/settings/tokens)
+  (`export HF_TOKEN=hf_...` before setup) so the download isn't rate-limited
 - Nothing else big running: the model takes ~93 GiB of the 128 GB memory pool. Unload LM
   Studio, Ollama and similar while it runs.
 
